@@ -1,0 +1,2 @@
+# BabelDOC 自带 pymupdf / openai / httpx / onnxruntime 等全部依赖
+babeldoc>=0.6.4

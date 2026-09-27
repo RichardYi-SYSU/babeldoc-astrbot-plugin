@@ -1,0 +1,91 @@
+{
+  "openai_base_url": {
+    "description": "OpenAI 兼容 API 的 Base URL",
+    "type": "string",
+    "default": "https://api.openai.com/v1",
+    "hint": "任何 OpenAI 兼容接口均可，如 https://api.deepseek.com/v1、https://dashscope.aliyuncs.com/compatible-mode/v1 等"
+  },
+  "openai_api_key": {
+    "description": "翻译服务的 API Key",
+    "type": "string",
+    "default": "",
+    "secret": true,
+    "hint": "与上方 Base URL 配套的密钥，必填，否则无法翻译"
+  },
+  "openai_model": {
+    "description": "翻译使用的模型",
+    "type": "string",
+    "default": "gpt-4o-mini",
+    "hint": "需与 Base URL 对应的服务商提供的模型名一致，如 deepseek-chat、qwen-plus 等"
+  },
+  "lang_in": {
+    "description": "原文语言",
+    "type": "string",
+    "default": "en",
+    "hint": "BabelDOC 主要针对英↔中优化"
+  },
+  "lang_out": {
+    "description": "译文语言",
+    "type": "string",
+    "default": "zh"
+  },
+  "output_mode": {
+    "description": "回传的 PDF 类型",
+    "type": "string",
+    "options": ["bilingual", "mono", "both"],
+    "default": "bilingual",
+    "hint": "bilingual=中英双语对照，mono=纯中文译文，both=两个都发"
+  },
+  "watermark_output_mode": {
+    "description": "输出 PDF 是否带 BabelDOC 水印",
+    "type": "string",
+    "options": ["no_watermark", "watermarked"],
+    "default": "no_watermark"
+  },
+  "auto_translate": {
+    "description": "自动翻译：检测到 PDF 文件即自动开始翻译（无需指令）",
+    "type": "bool",
+    "default": true
+  },
+  "group_trigger_mode": {
+    "description": "群聊中自动翻译的触发方式",
+    "type": "string",
+    "options": ["at", "all", "off"],
+    "default": "at",
+    "hint": "at=仅在消息同时 @机器人 时触发；all=群内任何 PDF 都翻译；off=群内关闭自动翻译。私聊始终生效"
+  },
+  "report_progress": {
+    "description": "翻译过程中向会话汇报进度",
+    "type": "bool",
+    "default": true
+  },
+  "progress_step": {
+    "description": "进度汇报步长（每完成多少百分比汇报一次）",
+    "type": "int",
+    "default": 25,
+    "hint": "设为 0 则只在开始和结束时汇报"
+  },
+  "qps": {
+    "description": "调用翻译 API 的每秒请求数",
+    "type": "int",
+    "default": 4,
+    "hint": "段落翻译的并发上限，过大可能触发服务商限流"
+  },
+  "auto_extract_glossary": {
+    "description": "自动术语表提取",
+    "type": "bool",
+    "default": false,
+    "hint": "开启后翻译质量更稳定，但会额外消耗较多 token 和时间"
+  },
+  "max_file_size_mb": {
+    "description": "接受的最大 PDF 文件大小（MB）",
+    "type": "int",
+    "default": 100
+  },
+  "keep_output_files": {
+    "description": "发送成功后保留生成的 PDF 文件",
+    "type": "bool",
+    "default": false,
+    "hint": "关闭时发送完毕即删除临时文件以节省磁盘；生成的文件存放于 data/plugin_data/astrbot_plugin_babeldoc/jobs/"
+  }
+}

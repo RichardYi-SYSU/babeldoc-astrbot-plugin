@@ -1,0 +1,8 @@
+name: astrbot_plugin_babeldoc
+display_name: BabelDOC 论文翻译
+desc: 基于 BabelDOC 的保留排版 PDF 论文翻译。发送英文 PDF，机器人自动返回精美排版的中英双语 PDF。
+short_desc: 发英文 PDF，回中文双语 PDF
+version: v0.1.0
+author: RichardYi
+repo: https://github.com/RichardYi-SYSU/babeldoc-astrbot-plugin
+astrbot_version: ">=4.0.0,<5"
